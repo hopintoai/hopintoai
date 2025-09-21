@@ -42,22 +42,22 @@
                         <i data-feather="settings" class="mr-3"></i> API Configuration
                     </span>
                 </div>
-                <div class="px-6 py-3 hover:bg-gray-800 hover:bg-opacity-50 cursor-pointer">
+                <div class="px-6 py-3 hover:bg-gray-800 hover:bg-opacity-50 cursor-pointer" data-platform="instagram" onclick="showPlatform('instagram')">
                     <span class="flex items-center">
                         <i data-feather="instagram" class="mr-3"></i> Instagram
                     </span>
                 </div>
-                <div class="px-6 py-3 hover:bg-gray-800 hover:bg-opacity-50 cursor-pointer">
+                <div class="px-6 py-3 hover:bg-gray-800 hover:bg-opacity-50 cursor-pointer" data-platform="twitter" onclick="showPlatform('twitter')">
                     <span class="flex items-center">
                         <i data-feather="twitter" class="mr-3"></i> Twitter
                     </span>
                 </div>
-                <div class="px-6 py-3 hover:bg-gray-800 hover:bg-opacity-50 cursor-pointer">
+                <div class="px-6 py-3 hover:bg-gray-800 hover:bg-opacity-50 cursor-pointer" data-platform="facebook" onclick="showPlatform('facebook')">
                     <span class="flex items-center">
                         <i data-feather="facebook" class="mr-3"></i> Facebook
                     </span>
                 </div>
-                <div class="px-6 py-3 hover:bg-gray-800 hover:bg-opacity-50 cursor-pointer">
+                <div class="px-6 py-3 hover:bg-gray-800 hover:bg-opacity-50 cursor-pointer" data-platform="youtube" onclick="showPlatform('youtube')">
                     <span class="flex items-center">
                         <i data-feather="youtube" class="mr-3"></i> YouTube
                     </span>
@@ -97,6 +97,8 @@
 
             <!-- Dashboard Content -->
             <main class="p-6">
+                <!-- Dashboard Section -->
+                <div id="dashboardSection" class="platform-section">
                 <h1 class="text-2xl font-bold text-gray-800 mb-6">Social Media Analytics</h1>
                 
                 <!-- Stats Cards -->
@@ -239,6 +241,125 @@
                 
                 <!-- Recent Activity -->
                 <div class="bg-white rounded-lg shadow overflow-hidden">
+                </div>
+                </div>
+
+                <!-- Platform Sections -->
+                <div id="instagramSection" class="platform-section hidden">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-feather="instagram" class="mr-2 text-pink-600"></i> Instagram Analytics
+                    </h2>
+                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                        <h3 class="text-xl font-semibold mb-4">Instagram Stats</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Followers</p>
+                                <p class="text-2xl font-bold" id="instagramFollowers">24.5K</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Engagement Rate</p>
+                                <p class="text-2xl font-bold" id="instagramEngagement">8.6%</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Revenue</p>
+                                <p class="text-2xl font-bold" id="instagramRevenue">$3,850</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-xl font-semibold mb-4">Recent Posts</h3>
+                        <div id="instagramActivity">
+                            <!-- Posts will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="twitterSection" class="platform-section hidden">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-feather="twitter" class="mr-2 text-blue-400"></i> Twitter Analytics
+                    </h2>
+                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                        <h3 class="text-xl font-semibold mb-4">Twitter Stats</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Followers</p>
+                                <p class="text-2xl font-bold" id="twitterFollowers">18.2K</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Engagement Rate</p>
+                                <p class="text-2xl font-bold" id="twitterEngagement">6.1%</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Revenue</p>
+                                <p class="text-2xl font-bold" id="twitterRevenue">$2,120</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-xl font-semibold mb-4">Recent Tweets</h3>
+                        <div id="twitterActivity">
+                            <!-- Tweets will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="facebookSection" class="platform-section hidden">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-feather="facebook" class="mr-2 text-blue-600"></i> Facebook Analytics
+                    </h2>
+                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                        <h3 class="text-xl font-semibold mb-4">Facebook Stats</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Followers</p>
+                                <p class="text-2xl font-bold" id="facebookFollowers">15.7K</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Engagement Rate</p>
+                                <p class="text-2xl font-bold" id="facebookEngagement">5.3%</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Revenue</p>
+                                <p class="text-2xl font-bold" id="facebookRevenue">$1,750</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-xl font-semibold mb-4">Recent Posts</h3>
+                        <div id="facebookActivity">
+                            <!-- Posts will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="youtubeSection" class="platform-section hidden">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-feather="youtube" class="mr-2 text-red-600"></i> YouTube Analytics
+                    </h2>
+                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                        <h3 class="text-xl font-semibold mb-4">YouTube Stats</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Subscribers</p>
+                                <p class="text-2xl font-bold" id="youtubeFollowers">42.3K</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Engagement Rate</p>
+                                <p class="text-2xl font-bold" id="youtubeEngagement">9.2%</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-500">Revenue</p>
+                                <p class="text-2xl font-bold" id="youtubeRevenue">$4,300</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-xl font-semibold mb-4">Recent Videos</h3>
+                        <div id="youtubeActivity">
+                            <!-- Videos will be loaded here -->
+                        </div>
+                    </div>
+                </div>
                     <div class="px-6 py-4 border-b border-gray-200">
                         <h3 class="text-lg font-semibold">Recent Activity</h3>
                     </div>
@@ -312,17 +433,69 @@
             window.location.href = 'index.html';
         });
 
-        // Platform navigation
-        document.querySelectorAll('nav > div:not(:first-child)').forEach(item => {
-            item.addEventListener('click', function() {
-                const platform = this.textContent.trim().toLowerCase();
-                alert(`Navigating to ${platform} analytics. In a real app, this would show ${platform}-specific data.`);
+        // Handle platform navigation
+        function showPlatform(platform) {
+            document.querySelectorAll('.platform-section').forEach(section => {
+                section.classList.add('hidden');
             });
+            document.getElementById(`${platform}Section`).classList.remove('hidden');
+            
+            // Update active nav item
+            document.querySelectorAll('nav > div').forEach(navItem => {
+                navItem.classList.remove('bg-gray-800', 'bg-opacity-50');
+            });
+            document.querySelector(`nav > div[data-platform="${platform}"]`).classList.add('bg-gray-800', 'bg-opacity-50');
+        }
+
+        // Make sure dashboard is shown by default
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('dashboardSection').classList.remove('hidden');
+            document.querySelector('nav > div:first-child').classList.add('bg-gray-800', 'bg-opacity-50');
+            initPlatformSections();
+            feather.replace();
         });
+
+        // Initialize platform sections with data
+        function initPlatformSections() {
+            const platforms = ['instagram', 'twitter', 'facebook', 'youtube'];
+            platforms.forEach(platform => {
+                const data = userConfig.analyticsData?.[platform] || generateMockData(platform.charAt(0).toUpperCase() + platform.slice(1));
+                
+                // Update stats
+                document.getElementById(`${platform}Followers`).textContent = data.followers.toLocaleString();
+                document.getElementById(`${platform}Engagement`).textContent = `${data.engagement}%`;
+                document.getElementById(`${platform}Revenue`).textContent = `${data.revenue.toLocaleString()}`;
+                
+                // Update activity
+                const activityEl = document.getElementById(`${platform}Activity`);
+                activityEl.innerHTML = data.recentPosts.map(post => `
+                    <div class="p-4 border-b border-gray-200">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-medium">${platform.charAt(0).toUpperCase() + platform.slice(1)} Post</p>
+                                <p class="text-gray-600 text-sm mt-1">${post.likes.toLocaleString()} likes • ${post.comments.toLocaleString()} comments</p>
+                            </div>
+                            <p class="text-gray-400 text-xs">${formatDate(post.date)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            });
+        }
         
         // Mobile sidebar toggle
         document.getElementById('sidebarToggle').addEventListener('click', function() {
-            document.querySelector('.sidebar').classList.toggle('hidden');
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('hidden');
+            
+            // Close sidebar when clicking outside
+            if (!sidebar.classList.contains('hidden')) {
+                document.addEventListener('click', function closeSidebar(e) {
+                    if (!sidebar.contains(e.target) && e.target.id !== 'sidebarToggle') {
+                        sidebar.classList.add('hidden');
+                        document.removeEventListener('click', closeSidebar);
+                    }
+                });
+            }
         });
 
         // Initialize with empty data if no config exists
@@ -334,9 +507,46 @@
                     facebook: '',
                     youtube: ''
                 },
-                connectedAccounts: []
+                connectedAccounts: [],
+                analyticsData: {
+                    instagram: generateMockData('Instagram'),
+                    twitter: generateMockData('Twitter'),
+                    facebook: generateMockData('Facebook'),
+                    youtube: generateMockData('YouTube')
+                }
             };
             localStorage.setItem('userConfig', JSON.stringify(userConfig));
+        }
+
+        // Generate mock data for platforms
+        function generateMockData(platform) {
+            const platforms = {
+                'Instagram': { color: '#E1306C', icon: 'instagram' },
+                'Twitter': { color: '#1DA1F2', icon: 'twitter' },
+                'Facebook': { color: '#1877F2', icon: 'facebook' },
+                'YouTube': { color: '#FF0000', icon: 'youtube' }
+            };
+            
+            const data = {
+                followers: Math.floor(Math.random() * 50000) + 5000,
+                engagement: (Math.random() * 10 + 2).toFixed(1),
+                revenue: Math.floor(Math.random() * 5000) + 1000,
+                growth: (Math.random() * 20 - 5).toFixed(1),
+                recentPosts: []
+            };
+            
+            // Generate 5 recent posts
+            for (let i = 0; i < 5; i++) {
+                data.recentPosts.push({
+                    id: i+1,
+                    likes: Math.floor(Math.random() * 5000) + 500,
+                    comments: Math.floor(Math.random() * 500) + 50,
+                    shares: Math.floor(Math.random() * 1000) + 100,
+                    date: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000)
+                });
+            }
+            
+            return { ...data, ...platforms[platform] };
         }
 
         // Show API config modal
@@ -362,10 +572,66 @@
                 facebook: document.getElementById('facebookKey').value,
                 youtube: document.getElementById('youtubeKey').value
             };
+            
+            // Update connected accounts
+            userConfig.connectedAccounts = [];
+            if (userConfig.apiKeys.instagram) userConfig.connectedAccounts.push('instagram');
+            if (userConfig.apiKeys.twitter) userConfig.connectedAccounts.push('twitter');
+            if (userConfig.apiKeys.facebook) userConfig.connectedAccounts.push('facebook');
+            if (userConfig.apiKeys.youtube) userConfig.connectedAccounts.push('youtube');
+            
             saveConfig();
             closeModal();
-            // In a real app, you would call APIs to fetch fresh data here
-            alert('API configuration updated. Fetching fresh data...');
+            updateDashboard();
+            alert('API configuration updated. Dashboard refreshed!');
+        }
+
+        // Update dashboard with current data
+        function updateDashboard() {
+            const currentUser = localStorage.getItem('currentUser');
+            document.querySelectorAll('.username-display').forEach(el => {
+                el.textContent = currentUser;
+            });
+            
+            // Update platform sections
+            userConfig.connectedAccounts.forEach(platform => {
+                const data = userConfig.analyticsData[platform];
+                document.getElementById(`${platform}Followers`).textContent = data.followers.toLocaleString();
+                document.getElementById(`${platform}Engagement`).textContent = `${data.engagement}%`;
+                document.getElementById(`${platform}Revenue`).textContent = `${data.revenue.toLocaleString()}`;
+                
+                // Update growth indicators
+                const growthEl = document.getElementById(`${platform}Growth`);
+                growthEl.textContent = `${Math.abs(data.growth)}%`;
+                growthEl.className = `text-${data.growth >= 0 ? 'green' : 'red'}-500 text-sm flex items-center`;
+                growthEl.innerHTML = `<i data-feather="trending-${data.growth >= 0 ? 'up' : 'down'}" class="w-4 h-4 mr-1"></i> ${Math.abs(data.growth)}% from last month`;
+                
+                // Update recent activity
+                const activityList = document.getElementById(`${platform}Activity`);
+                activityList.innerHTML = data.recentPosts.slice(0, 3).map(post => `
+                    <div class="p-4 flex items-start border-b border-gray-200">
+                        <div class="p-2 rounded-full bg-${data.color.replace('#', '')}-100 text-${data.color.replace('#', '')}-600 mr-4">
+                            <i data-feather="${data.icon}"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">New ${platform.charAt(0).toUpperCase() + platform.slice(1)} Post</p>
+                            <p class="text-gray-600 text-sm mt-1">Received ${post.likes.toLocaleString()} likes and ${post.comments.toLocaleString()} comments</p>
+                            <p class="text-gray-400 text-xs mt-2">${formatDate(post.date)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            });
+            
+            feather.replace();
+            initCharts();
+        }
+
+        function formatDate(date) {
+            const diff = Math.floor((new Date() - new Date(date)) / (1000 * 60 * 60 * 24));
+            if (diff === 0) return 'Today';
+            if (diff === 1) return 'Yesterday';
+            if (diff < 7) return `${diff} days ago`;
+            return new Date(date).toLocaleDateString();
         }
 
         // Charts initialization
