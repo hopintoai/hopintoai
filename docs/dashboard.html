@@ -87,9 +87,9 @@
                         </div>
                         <div class="flex items-center">
                             <div class="h-8 w-8 rounded-full bg-indigo-500 flex items-center justify-center text-white">
-                                C
+                                ${localStorage.getItem('currentUser')?.charAt(0).toUpperCase() || 'U'}
                             </div>
-                            <span class="ml-2 font-medium">Cory</span>
+                            <span class="ml-2 font-medium">${localStorage.getItem('currentUser') || 'User'}</span>
                         </div>
                     </div>
                 </div>
