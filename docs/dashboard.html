@@ -308,14 +308,36 @@
         // Logout functionality
         document.getElementById('logoutBtn').addEventListener('click', function() {
             localStorage.removeItem('authenticated');
-            localStorage.removeItem('userConfig');
+            localStorage.removeItem('currentUser');
             window.location.href = 'index.html';
+        });
+
+        // Platform navigation
+        document.querySelectorAll('nav > div:not(:first-child)').forEach(item => {
+            item.addEventListener('click', function() {
+                const platform = this.textContent.trim().toLowerCase();
+                alert(`Navigating to ${platform} analytics. In a real app, this would show ${platform}-specific data.`);
+            });
         });
         
         // Mobile sidebar toggle
         document.getElementById('sidebarToggle').addEventListener('click', function() {
             document.querySelector('.sidebar').classList.toggle('hidden');
         });
+
+        // Initialize with empty data if no config exists
+        if (!localStorage.getItem('userConfig')) {
+            userConfig = {
+                apiKeys: {
+                    instagram: '',
+                    twitter: '', 
+                    facebook: '',
+                    youtube: ''
+                },
+                connectedAccounts: []
+            };
+            localStorage.setItem('userConfig', JSON.stringify(userConfig));
+        }
 
         // Show API config modal
         function showAPIConfig() {
@@ -497,75 +519,7 @@
             feather.replace();
         </script>
     </body>
-    </html>
- + value;
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return context.dataset.label + ':         const followerChart = new Chart(followerCtx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'Followers',
-                    data: [12000, 15000, 17000, 19000, 21000, 23000, 24800],
-                    borderColor: '#6366F1',
-                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: false
-                    }
-                }
-            }
-        });
-        
-        const platformCtx = document.getElementById('platformChart').getContext('2d');
-        const platformChart = new Chart(platformCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Instagram', 'Twitter', 'Facebook', 'YouTube'],
-                datasets: [{
-                    data: [35, 25, 20, 20],
-                    backgroundColor: [
-                        '#E1306C',
-                        '#1DA1F2',
-                        '#1877F2',
-                        '#FF0000'
-                    ],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'right'
-                    }
-                },
-                cutout: '70%'
-            }
-        });
-    </script>
+</html>
 </body>
 </html>
  + context.raw;
@@ -576,62 +530,63 @@
             }
         });
 
-        const followerCtx = document.getElementById('followerChart').getContext('2d');
-        const followerChart = new Chart(followerCtx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'Followers',
-                    data: [12000, 15000, 17000, 19000, 21000, 23000, 24800],
-                    borderColor: '#6366F1',
-                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            const followerCtx = document.getElementById('followerChart').getContext('2d');
+            const followerChart = new Chart(followerCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        label: 'Followers',
+                        data: [12000, 15000, 17000, 19000, 21000, 23000, 24800],
+                        borderColor: '#6366F1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: false
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
                     }
                 }
-            }
-        });
-        
-        const platformCtx = document.getElementById('platformChart').getContext('2d');
-        const platformChart = new Chart(platformCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Instagram', 'Twitter', 'Facebook', 'YouTube'],
-                datasets: [{
-                    data: [35, 25, 20, 20],
-                    backgroundColor: [
-                        '#E1306C',
-                        '#1DA1F2',
-                        '#1877F2',
-                        '#FF0000'
-                    ],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'right'
-                    }
+            });
+            
+            const platformCtx = document.getElementById('platformChart').getContext('2d');
+            const platformChart = new Chart(platformCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Instagram', 'Twitter', 'Facebook', 'YouTube'],
+                    datasets: [{
+                        data: [35, 25, 20, 20],
+                        backgroundColor: [
+                            '#E1306C',
+                            '#1DA1F2',
+                            '#1877F2',
+                            '#FF0000'
+                        ],
+                        borderWidth: 0
+                    }]
                 },
-                cutout: '70%'
-            }
-        });
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
     </script>
 </body>
 </html>
